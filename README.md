@@ -53,8 +53,8 @@ The easiest way to use `@kirbah/mcp-youtube` is with an MCP-compatible client ap
     {
       "mcpServers": {
         "youtube": {
-          "command": "npx",
-          "args": ["-y", "@kirbah/mcp-youtube"],
+          "command": "bunx",
+          "args": ["@kirbah/mcp-youtube"],
           "env": {
             "YOUTUBE_API_KEY": "YOUR_YOUTUBE_API_KEY_HERE",
             "MDB_MCP_CONNECTION_STRING": "mongodb+srv://user:pass@cluster0.abc.mongodb.net/youtube_niche_analysis"
@@ -64,10 +64,11 @@ The easiest way to use `@kirbah/mcp-youtube` is with an MCP-compatible client ap
     }
     ```
 
-    - **Windows PowerShell Users:** `npx` can sometimes cause issues directly. If you encounter problems, try modifying the command as follows:
+    - **Windows PowerShell Users:** `bunx` should work seamlessly. If you don't have Bun installed, install it first with: `powershell -c "irm bun.sh/install.ps1 | iex"`
+    - **Alternative with npx:** If you prefer using npm/npx, you can still use:
       ```json
-        "command": "cmd",
-        "args": ["/k", "npx", "-y", "@kirbah/mcp-youtube"],
+        "command": "npx",
+        "args": ["-y", "@kirbah/mcp-youtube"],
       ```
 
 That's it! Your MCP client should now be able to leverage the YouTube tools provided by this server.
@@ -116,8 +117,7 @@ If you wish to contribute, modify the server, or run it locally outside of an MC
 
 ### Prerequisites
 
-- Node.js (version specified in `package.json` engines field - currently `>=20.0.0`)
-- npm (usually comes with Node.js)
+- Bun runtime (install via: `curl -fsSL https://bun.sh/install | bash`)
 - A YouTube Data API v3 Key (see [YouTube API Setup](#youtube-api-setup))
 
 ### Local Setup
@@ -132,7 +132,7 @@ If you wish to contribute, modify the server, or run it locally outside of an MC
 2.  **Install dependencies:**
 
     ```bash
-    npm ci
+    bun install
     ```
 
 3.  **Configure Environment:**
@@ -150,23 +150,23 @@ If you wish to contribute, modify the server, or run it locally outside of an MC
 
 ```bash
 # Run in development mode with live reloading
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
-# Run the production build (after npm run build)
-npm start
+# Run the production build (after bun run build)
+bun start
 
 # Lint files
-npm run lint
+bun run lint
 
 # Run tests
-npm run test
-npm run test -- --coverage # To generate coverage reports
+bun test
+bun test --coverage # To generate coverage reports
 
 # Inspect MCP server using the Model Context Protocol Inspector
-npm run inspector
+bun run inspector
 ```
 
 ### Local Development with an MCP Client
@@ -177,7 +177,7 @@ To have an MCP client run your _local development version_ (instead of the publi
 
     ```json
     "scripts": {
-      "start:client": "tsx ./src/index.ts"
+      "start:client": "bun run ./src/index.ts"
     }
     ```
 
@@ -186,7 +186,7 @@ To have an MCP client run your _local development version_ (instead of the publi
     {
       "mcpServers": {
         "youtube_local_dev": {
-          "command": "npm",
+          "command": "bun",
           "args": ["run", "start:client"],
           "working_directory": "/absolute/path/to/your/cloned/mcp-youtube",
           "env": {
@@ -219,8 +219,8 @@ This server supports two execution modes:
 
 ## System Requirements
 
-- Node.js: `>=20.0.0` (as specified in `package.json`)
-- npm (for managing dependencies and running scripts)
+- Bun runtime (latest stable version recommended)
+- Compatible with macOS, Linux, and Windows (via WSL)
 
 ## Deep Dive: `findConsistentOutlierChannels` Tool
 

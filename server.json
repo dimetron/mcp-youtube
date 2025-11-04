@@ -15,7 +15,7 @@
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "@kirbah/mcp-youtube",
       "version": "0.2.7",
-      "runtimeHint": "npx",
+      "runtimeHint": "bunx",
       "transport": {
         "type": "stdio"
       },

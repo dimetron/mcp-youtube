@@ -1,6 +1,8 @@
 # Smithery configuration file: https://smithery.ai/docs/build/project-config/smithery-yaml
 
 runtime: "typescript"
+esbuild:
+  config: "./esbuild.config.mjs"
 startCommand:
   type: http
   configSchema:

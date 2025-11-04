@@ -12,12 +12,12 @@ This file provides instructions for AI coding agents on how to work with this pr
 
 | Command             | Description                                                                 |
 | ------------------- | --------------------------------------------------------------------------- |
-| `npm install`       | Installs all project dependencies. Run this first.                          |
-| `npm run lint`      | Checks the code for linting errors according to ESLint rules.               |
-| `npm run format`    | Automatically formats all code using Prettier.                              |
-| `npm run test`      | Executes the entire Jest test suite. All tests must pass before committing. |
-| `npm run build`     | Compiles the TypeScript project into JavaScript in the `/dist` directory.   |
-| `npm run inspector` | Runs the MCP server with a local inspector for debugging tools.             |
+| `bun install`       | Installs all project dependencies. Run this first.                          |
+| `bun run lint`      | Checks the code for linting errors according to ESLint rules.               |
+| `bun run format`    | Automatically formats all code using Prettier.                              |
+| `bun test`          | Executes the entire Jest test suite. All tests must pass before committing. |
+| `bun run build`     | Compiles the TypeScript project into JavaScript in the `/dist` directory.   |
+| `bun run inspector` | Runs the MCP server with a local inspector for debugging tools.             |
 
 ## Project Architecture
 
@@ -50,15 +50,15 @@ This file provides instructions for AI coding agents on how to work with this pr
 
 ## Dev Environment
 
-- Use the `install_nvm.sh` script to set up the correct Node.js version.
-- Run `npm install` to install dependencies.
+- Install Bun if not already installed: `curl -fsSL https://bun.sh/install | bash`
+- Run `bun install` to install dependencies.
 - Create a `.env` file from `.env.example` and provide a valid `YOUTUBE_API_KEY`. The `MDB_MCP_CONNECTION_STRING` is optional.
 
 ## Testing Instructions
 
-- Run all tests with `npm run test`.
-- To run tests for a single file (which is faster during development), use: `npm run test -- <path_to_test_file>`.
-  - Example: `npm run test -- src/services/__tests__/youtube.service.test.ts`
+- Run all tests with `bun test`.
+- To run tests for a single file (which is faster during development), use: `bun test <path_to_test_file>`.
+  - Example: `bun test src/services/__tests__/youtube.service.test.ts`
 - Tests are written with Jest. Mocks for external services are heavily used. When modifying a service method, ensure you also check its corresponding mock in the test files.
 - Always add or update tests to reflect your code changes.
 
@@ -71,7 +71,7 @@ This file provides instructions for AI coding agents on how to work with this pr
   - `refactor(cache): Improve cache key generation`
 - **Pull Requests**:
   - Title format should be clear and concise.
-  - Before submitting, ensure you have run `npm run lint` and `npm run test` and that all checks pass.
+  - Before submitting, ensure you have run `bun run lint` and `bun test` and that all checks pass.
 
 ## Security & API Quota Considerations
 
